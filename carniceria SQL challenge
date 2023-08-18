@@ -1,0 +1,22 @@
+CREATE TABLE my_store(id INTEGER PRIMARY KEY, items TEXT,price INTEGER, quanity_bought INTEGER, quanity_sold INTEGER); /* makes a table that contains id, items,price,quantity bought and quanity sold */
+INSERT INTO my_store values
+(1, "chips", 3.15,42,35), 
+(2, "cereal", 1.20,30,22),
+(3, "ice", 4.00,100,22),
+(4, "bananas", 0.69,34,30),
+(5, "spinach", 1.10,20,11),
+(6, "avacado", 1.26,5,3),
+(7, "desmillo", 3.25,150,110),
+(8, "chicken",2.65,100,85),
+(9, "pastor", 3.49,95,68),
+(10, "ranchera",4.25,102,100),
+(11, "milanesa", 3.14,60,60),
+(12, "molida", 2.32,67,45),
+(13, "cola", 1.25,130,126),
+(14, "onions", 0.75,30,27),
+(15, "torilla", 3.35,200,200);
+SELECT * from my_store
+group by price; /* groups the table results by price*/
+select  SUM(quanity_sold) from my_store; /*adds up the colum quantity sold*/
+select  SUM(quanity_bought) from my_store
+ /*adds up the colum quantity bought*/
