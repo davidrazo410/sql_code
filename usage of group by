@@ -1,0 +1,34 @@
+CREATE TABLE customers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    email TEXT);
+    
+INSERT INTO customers (name, email) VALUES ("Doctor Who", "doctorwho@timelords.com");
+INSERT INTO customers (name, email) VALUES ("Harry Potter", "harry@potter.com");
+INSERT INTO customers (name, email) VALUES ("Captain Awesome", "captain@awesome.com");
+
+CREATE TABLE orders (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    customer_id INTEGER,
+    item TEXT,
+    price REAL);
+
+INSERT INTO orders (customer_id, item, price)
+    VALUES (1, "Sonic Screwdriver", 1000.00);
+INSERT INTO orders (customer_id, item, price)
+    VALUES (2, "High Quality Broomstick", 40.00);
+INSERT INTO orders (customer_id, item, price)
+    VALUES (1, "TARDIS", 1000000.00);
+
+select customers.name, customers.email,orders.item, orders.price 
+from customers
+left outer join orders
+on customers.id= customer_id; 
+/* make sure the 2 variable names after ON match the varibale name. here orders had customer id as customer_id not customer.id*/
+SELECT customers.name, customers.email,
+SUM (orders.price) as spent
+FROM customers 
+LEFT OUTER JOIN orders
+ON customers.id= customer_id
+group by customers.name /* group by must be custumers name, if its by price you will get multiple names as its displaying every price*/
+order by price desc; 
